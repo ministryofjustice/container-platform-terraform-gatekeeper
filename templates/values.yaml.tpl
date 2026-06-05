@@ -16,11 +16,11 @@ controllerManager:
   exemptNamespaces: ["kube-system"]
   nodeSelector:
     container-platform.justice.gov.uk/system-ng: "true"
-  tolerations:
-    - key: "system-node"
-      operator: "Equal"
-      value: "true"
-      effect: "NoSchedule"
+  # tolerations:
+  #   - key: "system-node"
+  #     operator: "Equal"
+  #     value: "true"
+  #     effect: "NoSchedule"
 audit:
   resources:
       limits:
@@ -30,10 +30,10 @@ audit:
         memory: ${audit_mem_req}
   nodeSelector:
     container-platform.justice.gov.uk/system-ng: "true"
-  tolerations:
-    - key: "system-node"
-      operator: "Equal"
-      value: "true"
-      effect: "NoSchedule"
+  # tolerations:
+  #   - key: "system-node"
+  #     operator: "Equal"
+  #     value: "true"
+  #     effect: "NoSchedule"
 psp:
   enabled: false

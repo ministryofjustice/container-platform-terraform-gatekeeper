@@ -14,8 +14,8 @@ controllerManager:
         cpu: 100m
         memory: ${controller_mem_req}
   exemptNamespaces: ["kube-system"]
-  nodeSelector:
-    container-platform.justice.gov.uk/system-ng: "true"
+  # nodeSelector:
+  #   container-platform.justice.gov.uk/system-ng: "true"
   # tolerations:
   #   - key: "system-node"
   #     operator: "Equal"
@@ -28,8 +28,8 @@ audit:
       requests:
         cpu: 100m
         memory: ${audit_mem_req}
-  nodeSelector:
-    container-platform.justice.gov.uk/system-ng: "true"
+  # nodeSelector:
+  #   container-platform.justice.gov.uk/system-ng: "true"
   # tolerations:
   #   - key: "system-node"
   #     operator: "Equal"

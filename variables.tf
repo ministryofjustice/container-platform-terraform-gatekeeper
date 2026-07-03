@@ -54,4 +54,8 @@ variable "dryrun_map" {
     warn_kubectl_create_sa             = bool
   })
 }
-
+variable "gatekeeper_chart_version" {
+  description = "Gatekeeper helm chart version"
+  type        = string
+  default = "3.22.2"
+}

@@ -17,5 +17,4 @@ module "gatekeeper" {
   controller_mem_req                   = terraform.workspace == local.live_workspace ? "1Gi" : "512Mi"
   audit_mem_limit                      = terraform.workspace == local.live_workspace ? "4Gi" : "1Gi"
   audit_mem_req                        = terraform.workspace == local.live_workspace ? "1Gi" : "512Mi"
-  gatekeeper_chart_version             = "3.22.2"
 }

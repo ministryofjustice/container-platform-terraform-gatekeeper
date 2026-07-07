@@ -21,5 +21,4 @@ module "gatekeeper" {
   controller_mem_req                   = "512Mi"
   audit_mem_limit                      = "1Gi"
   audit_mem_req                        = "512Mi"
-  gatekeeper_chart_version             = "3.22.2"
 }

@@ -8,6 +8,7 @@ spec:
       - apiGroups: [""]
         kinds: ["Namespace"]
     excludedNamespaces: [
+      "argocd",
       "cert-manager",
       "gatekeeper-system",
       "kube-system",

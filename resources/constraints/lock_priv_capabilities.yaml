@@ -14,13 +14,12 @@ spec:
       "logging",
       "monitoring",
       "smoketest-psa-*",
-      "trivy-system",
-      "amazon-guardduty"
+      "trivy-system"
       ]
     excludedNamespaces: [
       "kube-system",
       "kube-node-lease",
-      "kube-public",
+      "kube-public"
       ]
   parameters:
     allowedCapabilities: ["NET_BIND_SERVICE","NET_ADMIN"]

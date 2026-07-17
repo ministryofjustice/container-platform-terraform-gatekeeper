@@ -37,3 +37,6 @@ audit:
   #     effect: "NoSchedule"
 psp:
   enabled: false
+pdb:
+  controllerManager:
+    minAvailable: 0

@@ -21,7 +21,9 @@ spec:
       "smoketest-psa-*",
       "trivy-system",
       "amazon-guardduty",
-      "envoy-gateway-system"
+      "envoy-gateway-system",
+      "opentelemetry-operator-system",
+      "amazon-cloudwatch"
       ]
   parameters:
     message: "All user namespaces must have a `pod-security.kubernetes.io/enforce: restricted` label."

@@ -1,0 +1,22 @@
+kind: Suite
+apiVersion: test.gatekeeper.sh/v1alpha1
+tests:
+- name: block_host_network
+  template: ../../resources/constraint_templates/block_host_network.yaml
+  constraint: ../../resources/constraints/block_host_network.yaml
+  cases:
+  - name: allow-pod-creation-if-hostnetwork-not-set
+    object: samples/block_host_network/allow/pod_no_hostnetwork.yaml
+    assertions:
+    - violations: no
+  - name: allow-pod-creation-if-hostnetwork-in-allowed-namespace
+    object: samples/block_host_network/allow/pod_allowed_namespace.yaml
+    assertions:
+    - violations: no
+  - name: deny-pod-creation-if-hostnetwork-set
+    object: samples/block_host_network/deny/pod_hostnetwork_set.yaml
+    assertions:
+    - violations: yes
+      message: "hostNetwork: true is not permitted"
+
+

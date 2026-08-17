@@ -17,6 +17,7 @@ variable "dryrun_map" {
     user_ns_requires_psa_label         = bool
     lock_priv_capabilities             = bool
     warn_kubectl_create_sa             = bool
+    block_host_network                 = bool
   })
 }
 

@@ -13,6 +13,10 @@ tests:
     object: samples/block_host_network/allow/pod_allowed_namespace.yaml
     assertions:
     - violations: no
+  - name: allow-pod-creation-if-hostnetwork-in-observability-namespace
+    object: samples/block_host_network/allow/pod_observability_namespace.yaml
+    assertions:
+    - violations: no
   - name: deny-pod-creation-if-hostnetwork-set
     object: samples/block_host_network/deny/pod_hostnetwork_set.yaml
     assertions:

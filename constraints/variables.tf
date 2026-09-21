@@ -18,6 +18,7 @@ variable "dryrun_map" {
     lock_priv_capabilities             = bool
     warn_kubectl_create_sa             = bool
     block_host_network                 = bool
+    coraza_waf_include                 = bool
   })
 }
 

@@ -1,0 +1,17 @@
+kind: Suite
+apiVersion: test.gatekeeper.sh/v1alpha1
+metadata:
+  name: corazawafinclude
+tests:
+  - name: corazawafinclude
+    template: ../../resources/constraint_templates/coraza_waf_include.yaml
+    constraint: ../../resources/constraints/coraza_waf_include.yaml
+    cases:
+      - name: deny-missing-cp-include
+        object: samples/coraza_waf_include/deny_missing_cp_include/case.yaml
+        assertions:
+          - violations: yes
+      - name: allow-with-cp-include
+        object: samples/coraza_waf_include/allow_with_with_include/case.yaml
+        assertions:
+          - violations: no

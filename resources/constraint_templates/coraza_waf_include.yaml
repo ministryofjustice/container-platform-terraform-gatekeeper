@@ -1,0 +1,30 @@
+apiVersion: templates.gatekeeper.sh/v1
+kind: ConstraintTemplate
+metadata:
+  name: corazawafinclude
+  annotations:
+    metadata.gatekeeper.sh/title: "Enforce platform WAF rules"
+    description: Requires EnvoyExtensionPolicies with SecRuleEngine On to include the platform Coraza configuration.
+spec:
+  crd:
+    spec:
+      names:
+        kind: CorazaWafInclude
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |
+        package corazawafinclude
+
+        violation[{"msg": msg}] {
+          dynamic_module := input.review.object.spec.dynamicModule[_]
+
+          has_directive(dynamic_module.config.directives, "SecRuleEngine On")
+          not has_directive(dynamic_module.config.directives, "Include /etc/coraza/cp/coraza-cp.conf")
+
+          msg := "dynamicModule with SecRuleEngine On must include shared platform rules by using '- Include /etc/coraza/cp/coraza-cp.conf' in directives"
+        }
+
+        has_directive(directives, expected_directive) {
+          directives[_] == expected_directive
+        }
+

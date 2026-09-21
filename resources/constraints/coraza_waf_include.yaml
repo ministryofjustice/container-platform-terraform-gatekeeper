@@ -1,0 +1,9 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: CorazaWafInclude
+metadata:
+  name: corazawafincludesplatformrules
+spec:
+  match:
+    kinds:
+      - apiGroups: ["gateway.envoyproxy.io"]
+        kinds: ["EnvoyExtensionPolicy"]

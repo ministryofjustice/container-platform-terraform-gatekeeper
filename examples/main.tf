@@ -9,6 +9,7 @@ module "gatekeeper" {
     lock_priv_capabilities             = true,
     warn_kubectl_create_sa             = true,
     block_host_network                 = true,
+    coraza_waf_include                 = true,
   }
   constraint_violations_max_to_display = 25
   is_production                        = terraform.workspace == local.production_workspace ? "true" : "false"

@@ -5,6 +5,7 @@ locals {
   lock_priv_capabilities_yaml             = yamldecode(file("${path.module}/../resources/constraints/lock_priv_capabilities.yaml"))
   warn_kubectl_create_sa                  = yamldecode(file("${path.module}/../resources/constraints/warn_sa.yaml"))
   block_host_network                      = yamldecode(file("${path.module}/../resources/constraints/block_host_network.yaml"))
+  coraza_waf_include_yaml                 = yamldecode(file("${path.module}/../resources/constraints/coraza_waf_include.yaml"))
 
   # For each constraint, a value needs to be in the constraint map. This bloc allows us to set values on constraints which enables us to toggle the configuration of the constraints. -- we merge in the spec separately to avoid overwriting entire spec key
   constraint_map = {
@@ -14,5 +15,6 @@ locals {
     lock_priv_capabilities             = merge(local.lock_priv_capabilities_yaml, { "spec" : merge(local.lock_priv_capabilities_yaml["spec"], { "enforcementAction" : var.dryrun_map.lock_priv_capabilities ? "dryrun" : "deny" }) })
     warn_kubectl_create_sa             = merge(local.warn_kubectl_create_sa, { "spec" : merge(local.warn_kubectl_create_sa["spec"], { "enforcementAction" : var.dryrun_map.warn_kubectl_create_sa ? "dryrun" : "warn" }) })
     block_host_network                 = merge(local.block_host_network, { "spec" : merge(local.block_host_network["spec"], { "enforcementAction" : var.dryrun_map.block_host_network ? "dryrun" : "deny" }) })   
+    coraza_waf_include                 = merge(local.coraza_waf_include_yaml, { "spec" : merge(local.coraza_waf_include_yaml["spec"], { "enforcementAction" : var.dryrun_map.coraza_waf_include ? "dryrun" : "deny" }) })
   }
 }

@@ -3,6 +3,16 @@ constraintViolationsLimit: ${constraint_violations_max_to_display}
 auditFromCache: ${audit_from_cache}
 enableDeleteOperations: true
 mutationAnnotations: true
+# Annotate the controller/webhook and audit pods so the CP3 ADOT collector's
+# annotation-driven kubernetes-pods scrape job discovers their metrics on
+# :8888 (constraint violations, audit, and request/webhook metrics). Gatekeeper
+# exposes no metrics Service, so pod annotations are the discovery mechanism.
+podAnnotations:
+  prometheus.io/scrape: "true"
+  prometheus.io/port: "8888"
+auditPodAnnotations:
+  prometheus.io/scrape: "true"
+  prometheus.io/port: "8888"
 postInstall:
   labelNamespace:
     enabled: ${post_install_label_namespace}
